@@ -1,9 +1,18 @@
-package com.asuka.android.asukaandroid.view.listview;
+package com.asuka.android.asukaandroid.view.listview.adapter;/**
+ * Created by egojit on 2016/9/11.
+ */
 
-import android.util.Log;
+/************************************************************
+ * Auther:Egojit
+ * Time:2016-07-20
+ * Mark:**********
+ ***********************************************************/
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import com.asuka.android.asukaandroid.comm.utils.LogUtil;
 
 /**
  * Created by Mr.Jude on 2015/8/18.
@@ -34,7 +43,7 @@ public class DefaultEventDelegate implements EventDelegate {
     }
 
     public void onMoreViewShowed() {
-        log("onMoreViewShowed");
+        LogUtil.d("onMoreViewShowed");
         if (!isLoadingMore&&onLoadMoreListener!=null){
             isLoadingMore = true;
             onLoadMoreListener.onLoadMore();
@@ -48,7 +57,7 @@ public class DefaultEventDelegate implements EventDelegate {
     //-------------------5个状态触发事件-------------------
     @Override
     public void addData(int length) {
-        log("addData" + length);
+        LogUtil.d("addData" + length);
         if (hasMore){
             if (length == 0){
                 //当添加0个时，认为已结束加载到底
@@ -73,7 +82,7 @@ public class DefaultEventDelegate implements EventDelegate {
 
     @Override
     public void clear() {
-        log("clear");
+        LogUtil.d("clear");
         hasData = false;
         status = STATUS_INITIAL;
         footer.hide();
@@ -82,7 +91,7 @@ public class DefaultEventDelegate implements EventDelegate {
 
     @Override
     public void stopLoadMore() {
-        log("stopLoadMore");
+        LogUtil.d("stopLoadMore");
         footer.showNoMore();
         status = STATUS_NOMORE;
         isLoadingMore = false;
@@ -90,7 +99,7 @@ public class DefaultEventDelegate implements EventDelegate {
 
     @Override
     public void pauseLoadMore() {
-        log("pauseLoadMore");
+        LogUtil.d("pauseLoadMore");
         footer.showError();
         status = STATUS_ERROR;
         isLoadingMore = false;
@@ -110,21 +119,21 @@ public class DefaultEventDelegate implements EventDelegate {
         this.footer.setMoreView(view);
         this.onLoadMoreListener = listener;
         hasMore = true;
-        log("setMore");
+        LogUtil.d("setMore");
     }
 
     @Override
     public void setNoMore(View view) {
         this.footer.setNoMoreView(view);
         hasNoMore = true;
-        log("setNoMore");
+        LogUtil.d("setNoMore");
     }
 
     @Override
     public void setErrorMore(View view) {
         this.footer.setErrorView(view);
         hasError = true;
-        log("setErrorMore");
+        LogUtil.d("setErrorMore");
     }
 
 
@@ -148,13 +157,13 @@ public class DefaultEventDelegate implements EventDelegate {
 
         @Override
         public View onCreateView(ViewGroup parent) {
-            log("onCreateView");
+            LogUtil.d("onCreateView");
             return container;
         }
 
         @Override
         public void onBindView(View headerView) {
-            log("onBindView");
+            LogUtil.d("onBindView");
             switch (flag){
                 case ShowMore:
                     onMoreViewShowed();
@@ -222,9 +231,7 @@ public class DefaultEventDelegate implements EventDelegate {
         }
     }
 
-    private static void log(String content){
-        if (EasyRecyclerView.DEBUG){
-            Log.i(EasyRecyclerView.TAG,content);
-        }
-    }
+//    private static void log(String content){
+//        LogUtil.i(EasyRecyclerView.TAG,content);
+//    }
 }

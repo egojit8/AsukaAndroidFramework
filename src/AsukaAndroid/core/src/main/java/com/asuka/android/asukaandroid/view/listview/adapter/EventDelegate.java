@@ -1,4 +1,12 @@
-package com.asuka.android.asukaandroid.view.listview;
+package com.asuka.android.asukaandroid.view.listview.adapter;/**
+ * Created by egojit on 2016/9/11.
+ */
+
+/************************************************************
+ * Auther:Egojit
+ * Time:2016-07-20
+ * Mark:**********
+ ***********************************************************/
 
 import android.view.View;
 

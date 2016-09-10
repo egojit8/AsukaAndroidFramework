@@ -1,4 +1,6 @@
-package com.asuka.android.asukaandroid.view.listview.decoration;
+package com.asuka.android.asukaandroid.view.listview.decoration;/**
+ * Created by egojit on 2016/9/11.
+ */
 
 import android.graphics.Rect;
 import android.support.v7.widget.GridLayoutManager;
@@ -9,8 +11,13 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.Gravity;
 import android.view.View;
 
-import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.asuka.android.asukaandroid.view.listview.adapter.RecyclerArrayAdapter;
 
+/************************************************************
+ * Auther:Egojit
+ * Time:2016-07-20
+ * Mark:**********
+ ***********************************************************/
 public class SpaceDecoration extends RecyclerView.ItemDecoration {
 
     private int halfSpace;
@@ -50,18 +57,18 @@ public class SpaceDecoration extends RecyclerView.ItemDecoration {
         }
 
         RecyclerView.LayoutManager layoutManager = parent.getLayoutManager();
-         if (layoutManager instanceof StaggeredGridLayoutManager){
-             orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
-             spanCount = ((StaggeredGridLayoutManager) layoutManager).getSpanCount();
-             spanIndex = ((StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams()).getSpanIndex();
+        if (layoutManager instanceof StaggeredGridLayoutManager){
+            orientation = ((StaggeredGridLayoutManager) layoutManager).getOrientation();
+            spanCount = ((StaggeredGridLayoutManager) layoutManager).getSpanCount();
+            spanIndex = ((StaggeredGridLayoutManager.LayoutParams) view.getLayoutParams()).getSpanIndex();
         }else if (layoutManager instanceof GridLayoutManager){
-             orientation = ((GridLayoutManager) layoutManager).getOrientation();
-             spanCount = ((GridLayoutManager) layoutManager).getSpanCount();
-             spanIndex = ((GridLayoutManager.LayoutParams) view.getLayoutParams()).getSpanIndex();
+            orientation = ((GridLayoutManager) layoutManager).getOrientation();
+            spanCount = ((GridLayoutManager) layoutManager).getSpanCount();
+            spanIndex = ((GridLayoutManager.LayoutParams) view.getLayoutParams()).getSpanIndex();
         }else if (layoutManager instanceof LinearLayoutManager){
-             orientation = ((LinearLayoutManager) layoutManager).getOrientation();
-             spanCount = 1;
-             spanIndex = 0;
+            orientation = ((LinearLayoutManager) layoutManager).getOrientation();
+            spanCount = 1;
+            spanIndex = 0;
         }
 
         /**
@@ -127,21 +134,21 @@ public class SpaceDecoration extends RecyclerView.ItemDecoration {
                 outRect.right = halfSpace*2;
             }
         }else {//只有HeaderFooter进到这里
-                if (mPaddingHeaderFooter) {//并且需要padding Header&Footer
-                    if (orientation == OrientationHelper.VERTICAL){
-                        if (mPaddingEdgeSide) {
-                            outRect.left = halfSpace * 2;
-                            outRect.right = halfSpace * 2;
-                        }
-                        outRect.top =  halfSpace*2;
-                    }else{
-                        if (mPaddingEdgeSide) {
-                            outRect.top = halfSpace * 2;
-                            outRect.bottom = halfSpace * 2;
-                        }
-                        outRect.left =  halfSpace*2;
+            if (mPaddingHeaderFooter) {//并且需要padding Header&Footer
+                if (orientation == OrientationHelper.VERTICAL){
+                    if (mPaddingEdgeSide) {
+                        outRect.left = halfSpace * 2;
+                        outRect.right = halfSpace * 2;
                     }
+                    outRect.top =  halfSpace*2;
+                }else{
+                    if (mPaddingEdgeSide) {
+                        outRect.top = halfSpace * 2;
+                        outRect.bottom = halfSpace * 2;
+                    }
+                    outRect.left =  halfSpace*2;
                 }
+            }
         }
     }
 

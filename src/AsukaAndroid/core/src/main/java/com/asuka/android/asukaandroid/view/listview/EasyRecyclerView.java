@@ -1,21 +1,28 @@
-package com.asuka.android.asukaandroid.view.listview;
+package com.asuka.android.asukaandroid.view.listview;/**
+ * Created by egojit on 2016/9/11.
+ */
 
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.ColorRes;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
-import com.jude.easyrecyclerview.swipe.SwipeRefreshLayout;
+import com.asuka.android.asukaandroid.R;
+import com.asuka.android.asukaandroid.comm.utils.LogUtil;
+import com.asuka.android.asukaandroid.view.listview.adapter.RecyclerArrayAdapter;
+import com.asuka.android.asukaandroid.view.listview.swipe.SwipeRefreshLayout;
 
-
+/************************************************************
+ * Auther:Egojit
+ * Time:2016-07-20
+ * Mark:**********
+ ***********************************************************/
 public class EasyRecyclerView extends FrameLayout {
     public static final String TAG = "EasyRecyclerView";
     public static boolean DEBUG = false;
@@ -228,7 +235,7 @@ public class EasyRecyclerView extends FrameLayout {
     }
 
 
-    public static class EasyDataObserver extends AdapterDataObserver {
+    public static class EasyDataObserver extends RecyclerView.AdapterDataObserver {
         private EasyRecyclerView recyclerView;
 
         public EasyDataObserver(EasyRecyclerView recyclerView) {
@@ -267,7 +274,7 @@ public class EasyRecyclerView extends FrameLayout {
 
         //自动更改Container的样式
         private void update() {
-            log("update");
+            LogUtil.d("update");
             int count;
             if (recyclerView.getAdapter() instanceof RecyclerArrayAdapter) {
                 count = ((RecyclerArrayAdapter) recyclerView.getAdapter()).getCount();
@@ -275,10 +282,10 @@ public class EasyRecyclerView extends FrameLayout {
                 count = recyclerView.getAdapter().getItemCount();
             }
             if (count == 0) {
-                log("no data:"+"show empty");
+                LogUtil.d("no data:"+"show empty");
                 recyclerView.showEmpty();
             } else{
-                log("has data");
+                LogUtil.d("has data");
                 recyclerView.showRecycler();
             }
         }
@@ -339,7 +346,7 @@ public class EasyRecyclerView extends FrameLayout {
 
 
     public void showError() {
-        log("showError");
+        LogUtil.d("showError");
         if (mErrorView.getChildCount()>0){
             hideAll();
             mErrorView.setVisibility(View.VISIBLE);
@@ -350,7 +357,7 @@ public class EasyRecyclerView extends FrameLayout {
     }
 
     public void showEmpty() {
-        log("showEmpty");
+        LogUtil.d("showEmpty");
         if (mEmptyView.getChildCount()>0){
             hideAll();
             mEmptyView.setVisibility(View.VISIBLE);
@@ -361,7 +368,7 @@ public class EasyRecyclerView extends FrameLayout {
 
 
     public void showProgress() {
-        log("showProgress");
+        LogUtil.d("showProgress");
         if (mProgressView.getChildCount()>0){
             hideAll();
             mProgressView.setVisibility(View.VISIBLE);
@@ -372,7 +379,7 @@ public class EasyRecyclerView extends FrameLayout {
 
 
     public void showRecycler() {
-        log("showRecycler");
+        LogUtil.d("showRecycler");
         hideAll();
         mRecycler.setVisibility(View.VISIBLE);
     }
@@ -463,7 +470,7 @@ public class EasyRecyclerView extends FrameLayout {
     }
 
 
-    public void setOnTouchListener(OnTouchListener listener) {
+    public void setOnTouchListener(View.OnTouchListener listener) {
         mRecycler.setOnTouchListener(listener);
     }
 
@@ -509,10 +516,5 @@ public class EasyRecyclerView extends FrameLayout {
         return null;
     }
 
-    private static void log(String content){
-        if (DEBUG){
-            Log.i(TAG,content);
-        }
-    }
 
 }

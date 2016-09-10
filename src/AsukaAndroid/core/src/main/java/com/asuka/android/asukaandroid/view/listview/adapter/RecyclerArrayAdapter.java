@@ -1,30 +1,18 @@
-/*
- * Copyright (C) 2006 The Android Open Source Project
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+package com.asuka.android.asukaandroid.view.listview.adapter;/**
+ * Created by egojit on 2016/9/11.
  */
-
-package com.asuka.android.asukaandroid.view.listview;
 
 import android.content.Context;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import com.asuka.android.asukaandroid.comm.utils.LogUtil;
+import com.asuka.android.asukaandroid.view.listview.EasyRecyclerView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -33,20 +21,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * A concrete BaseAdapter that is backed by an array of arbitrary
- * objects.  By default this class expects that the provided resource id references
- * a single TextView.  If you want to use a more complex layout, use the constructors that
- * also takes a field id.  That field id should reference a TextView in the larger layout
- * resource.
- *
- * <p>However the TextView is referenced, it will be filled with the toString() of each object in
- * the array. You can add lists or arrays of custom objects. Override the toString() method
- * of your objects to determine what text will be displayed for the item in the list.
- *
- * <p>To use something other than TextViews for the array display, for instance, ImageViews,
- * or to have some of data besides toString() results fill the views,
- */
+/************************************************************
+ * Auther:Egojit
+ * Time:2016-07-20
+ * Mark:**********
+ ***********************************************************/
 abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseViewHolder>   {
     /**
      * Contains the list of objects that represent the data of this ArrayAdapter.
@@ -63,8 +42,8 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
     RecyclerView.AdapterDataObserver mObserver;
 
     public interface ItemView {
-         View onCreateView(ViewGroup parent);
-         void onBindView(View headerView);
+        View onCreateView(ViewGroup parent);
+        void onBindView(View headerView);
     }
     public interface OnLoadMoreListener{
         void onLoadMore();
@@ -280,7 +259,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         }
         if (mObserver!=null)mObserver.onItemRangeInserted(getCount()+1,1);
         if (mNotifyOnChange) notifyItemInserted(headers.size()+getCount()+1);
-        log("add notifyItemInserted "+(headers.size()+getCount()+1));
+        LogUtil.d("add notifyItemInserted "+(headers.size()+getCount()+1));
     }
     /**
      * Adds the specified Collection at the end of the array.
@@ -297,7 +276,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         int dataCount = collection==null?0:collection.size();
         if (mObserver!=null)mObserver.onItemRangeInserted(getCount()-dataCount+1,dataCount);
         if (mNotifyOnChange) notifyItemRangeInserted(headers.size()+getCount()-dataCount+1,dataCount);
-        log("addAll notifyItemRangeInserted "+(headers.size()+getCount()-dataCount+1)+","+(dataCount));
+        LogUtil.d("addAll notifyItemRangeInserted "+(headers.size()+getCount()-dataCount+1)+","+(dataCount));
 
     }
 
@@ -316,7 +295,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         int dataCount = items==null?0:items.length;
         if (mObserver!=null)mObserver.onItemRangeInserted(getCount()-dataCount+1,dataCount);
         if (mNotifyOnChange) notifyItemRangeInserted(headers.size()+getCount()-dataCount+1,dataCount);
-        log("addAll notifyItemRangeInserted "+((headers.size()+getCount()-dataCount+1)+","+(dataCount)));
+        LogUtil.d("addAll notifyItemRangeInserted "+((headers.size()+getCount()-dataCount+1)+","+(dataCount)));
     }
 
     /**
@@ -331,7 +310,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         }
         if (mObserver!=null)mObserver.onItemRangeInserted(index,1);
         if (mNotifyOnChange) notifyItemInserted(headers.size()+index+1);
-        log("insert notifyItemRangeInserted "+(headers.size()+index+1));
+        LogUtil.d("insert notifyItemRangeInserted "+(headers.size()+index+1));
     }
 
     /**
@@ -347,7 +326,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         int dataCount = object==null?0:object.length;
         if (mObserver!=null)mObserver.onItemRangeInserted(index+1,dataCount);
         if (mNotifyOnChange) notifyItemRangeInserted(headers.size()+index+1,dataCount);
-        log("insertAll notifyItemRangeInserted "+((headers.size()+index+1)+","+(dataCount)));
+        LogUtil.d("insertAll notifyItemRangeInserted "+((headers.size()+index+1)+","+(dataCount)));
     }
 
     /**
@@ -363,7 +342,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         int dataCount = object==null?0:object.size();
         if (mObserver!=null)mObserver.onItemRangeInserted(index+1,dataCount);
         if (mNotifyOnChange) notifyItemRangeInserted(headers.size()+index+1,dataCount);
-        log("insertAll notifyItemRangeInserted "+((headers.size()+index+1)+","+(dataCount)));
+        LogUtil.d("insertAll notifyItemRangeInserted "+((headers.size()+index+1)+","+(dataCount)));
     }
 
     /**
@@ -377,7 +356,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
             if (mObjects.remove(object)){
                 if (mObserver!=null)mObserver.onItemRangeRemoved(position,1);
                 if (mNotifyOnChange) notifyItemRemoved(headers.size()+position);
-                log("remove notifyItemRemoved "+(headers.size()+position));
+                LogUtil.d("remove notifyItemRemoved "+(headers.size()+position));
             }
         }
     }
@@ -393,7 +372,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         }
         if (mObserver!=null)mObserver.onItemRangeRemoved(position,1);
         if (mNotifyOnChange) notifyItemRemoved(headers.size()+position);
-        log("remove notifyItemRemoved "+(headers.size()+position));
+        LogUtil.d("remove notifyItemRemoved "+(headers.size()+position));
     }
 
 
@@ -408,7 +387,7 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         }
         if (mObserver!=null)mObserver.onItemRangeRemoved(0,count);
         if (mNotifyOnChange) notifyItemRangeRemoved(headers.size(),count);
-        log("clear notifyItemRangeRemoved "+(headers.size())+","+(count));
+        LogUtil.d("clear notifyItemRangeRemoved "+(headers.size())+","+(count));
     }
 
     /**
@@ -646,9 +625,5 @@ abstract public class RecyclerArrayAdapter<T> extends RecyclerView.Adapter<BaseV
         this.mItemLongClickListener = listener;
     }
 
-    private static void log(String content){
-        if (EasyRecyclerView.DEBUG){
-            Log.i(EasyRecyclerView.TAG,content);
-        }
-    }
+
 }

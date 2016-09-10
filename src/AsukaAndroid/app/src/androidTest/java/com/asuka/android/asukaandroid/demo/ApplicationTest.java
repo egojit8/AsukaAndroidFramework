@@ -1,4 +1,4 @@
-package com.asuka.asukaandroid.demo;
+package com.asuka.android.asukaandroid.demo;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

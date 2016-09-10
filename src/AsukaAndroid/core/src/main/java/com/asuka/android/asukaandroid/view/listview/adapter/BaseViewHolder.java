@@ -1,4 +1,4 @@
-package com.asuka.android.asukaandroid.view.listview;
+package com.asuka.android.asukaandroid.view.listview.adapter;
 
 import android.content.Context;
 import android.support.annotation.IdRes;
@@ -9,7 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 /**
- * M为这个itemView对应的model。
+/************************************************************
+ * Auther:Egojit
+ * Time:2016-07-20
+ * Mark:M为这个itemView对应的model。
  * 使用RecyclerArrayAdapter就一定要用这个ViewHolder。
  * 这个ViewHolder将ItemView与Adapter解耦。
  * 推荐子类继承第二个构造函数。并将子类的构造函数设为一个ViewGroup parent。
@@ -17,8 +20,8 @@ import android.view.ViewGroup;
  * 实现setData来实现UI修改。Adapter会在onCreateViewHolder里自动调用。
  *
  * 在一些特殊情况下，只能在setData里设置监听。
- * @param <M>
- */
+ ***********************************************************/
+
 abstract public class BaseViewHolder<M> extends RecyclerView.ViewHolder {
     public BaseViewHolder(View itemView) {
         super(itemView);

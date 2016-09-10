@@ -1,4 +1,4 @@
-package com.asuka.android.asukaandroid;
+package com.asuka.android.asukaandroid.demo;
 
 import org.junit.Test;
 

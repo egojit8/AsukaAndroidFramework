@@ -1,4 +1,6 @@
-package com.asuka.android.asukaandroid.view.listview.decoration;
+package com.asuka.android.asukaandroid.view.listview.decoration;/**
+ * Created by egojit on 2016/9/11.
+ */
 
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -10,8 +12,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.View;
 
-import com.jude.easyrecyclerview.adapter.RecyclerArrayAdapter;
+import com.asuka.android.asukaandroid.view.listview.adapter.RecyclerArrayAdapter;
 
+/************************************************************
+ * Auther:Egojit
+ * Time:2016-07-20
+ * Mark:**********
+ ***********************************************************/
 public class DividerDecoration extends RecyclerView.ItemDecoration{
     private ColorDrawable mColorDrawable;
     private int mHeight;
@@ -126,5 +133,5 @@ public class DividerDecoration extends RecyclerView.ItemDecoration{
                 }
             }
         }
-  }
+    }
 }

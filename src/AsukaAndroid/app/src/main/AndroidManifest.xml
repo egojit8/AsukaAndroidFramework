@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.asuka.asukaandroid.demo" >
+    package="com.asuka.android.asukaandroid.demo" >
 
     <application
         android:allowBackup="true"
@@ -9,7 +9,7 @@
         android:name=".DemoApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
-        <activity android:name="com.asuka.asukaandroid.demo.MainActivity" >
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
