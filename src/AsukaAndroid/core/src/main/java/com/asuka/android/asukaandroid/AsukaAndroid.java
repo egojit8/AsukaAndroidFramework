@@ -1,6 +1,5 @@
 package com.asuka.android.asukaandroid;
 
-import android.app.Application;
 import android.content.Context;
 
 import com.asuka.android.asukaandroid.view.ViewInjector;
@@ -24,17 +23,17 @@ public final class AsukaAndroid {
         return Ext.debug;
     }
 
-    public static AsukaApplication app() {
+    public static EgojitApplication app() {
         if (Ext.app == null) {
             try {
                 // 在IDE进行布局预览时使用
                 Class<?> renderActionClass = Class.forName("com.android.layoutlib.bridge.impl.RenderAction");
                 Method method = renderActionClass.getDeclaredMethod("getCurrentContext");
                 Context context = (Context) method.invoke(null);
-                Ext.app = new AsukaApplication(context);
+                Ext.app = new EgojitApplication(context);
             } catch (Throwable ignored) {
-                throw new RuntimeException("please invoke x.Ext.init(app) on Application#onCreate()"
-                        + " and register your Application in manifest.");
+                throw new RuntimeException("please invoke x.Ext.init(app) on EgojitOrmApplication#onCreate()"
+                        + " and register your EgojitOrmApplication in manifest.");
             }
         }
         return Ext.app;
@@ -75,7 +74,7 @@ public final class AsukaAndroid {
 
     public static class Ext {
         private static boolean debug;
-        private static AsukaApplication app;
+        private static EgojitApplication app;
         private static ViewInjector viewInjector;
 
         private Ext() {
@@ -94,7 +93,7 @@ public final class AsukaAndroid {
             });
         }
 
-        public static void init(AsukaApplication app) {
+        public static void init(EgojitApplication app) {
             if (Ext.app == null) {
                 Ext.app = app;
             }

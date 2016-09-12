@@ -10,9 +10,9 @@ import com.asuka.android.asukaandroid.comm.AppManager;
  * Time:2016-9-9
  * Mask:基础Application
  */
-public class AsukaApplication  extends Application {
+public class EgojitApplication extends Application {
 
-    public AsukaApplication(){
+    public EgojitApplication(){
         super();
     }
 
@@ -30,7 +30,7 @@ public class AsukaApplication  extends Application {
     }
 
 
-    public AsukaApplication(Context context){
+    public EgojitApplication(Context context){
         this.attachBaseContext(context);
     }
 

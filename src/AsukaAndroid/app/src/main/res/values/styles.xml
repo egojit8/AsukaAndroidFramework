@@ -19,7 +19,7 @@
     <!--</style>-->
 
 
-    <!--&lt;!&ndash; Application theme. &ndash;&gt;-->
+    <!--&lt;!&ndash; EgojitOrmApplication theme. &ndash;&gt;-->
     <!--<style name="AppTheme" parent="AppBaseTheme">-->
         <!--&lt;!&ndash; All customizations that are NOT specific to a particular API-level can go here. &ndash;&gt;-->
         <!--&lt;!&ndash;<item name="vpiIconPageIndicatorStyle">@style/Widget.IconPageIndicator</item>&ndash;&gt;-->
