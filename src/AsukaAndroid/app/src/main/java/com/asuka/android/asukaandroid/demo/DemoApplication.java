@@ -4,11 +4,12 @@ import android.content.Context;
 
 import com.asuka.android.asukaandroid.AsukaAndroid;
 import com.asuka.android.asukaandroid.EgojitApplication;
+import com.asuka.android.asukaandroid.orm.app.AsukaOrmApplication;
 
 /**
  * Created by egojit on 16/9/9.
  */
-public class DemoApplication extends EgojitApplication {
+public class DemoApplication extends AsukaOrmApplication {
 
 
     public DemoApplication(Context context) {

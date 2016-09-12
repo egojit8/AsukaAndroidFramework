@@ -17,10 +17,18 @@ package com.asuka.android.asukaandroid.orm.app;
  */
 
 
+import android.content.Context;
+
 import com.asuka.android.asukaandroid.EgojitApplication;
 import com.asuka.android.asukaandroid.orm.AsukaOrmAndroid;
 
 public class AsukaOrmApplication extends EgojitApplication {
+	public AsukaOrmApplication(Context context){
+		super(context);
+	}
+	public AsukaOrmApplication(){
+		super();
+	}
 	@Override
 	public void onCreate() {
 		super.onCreate();

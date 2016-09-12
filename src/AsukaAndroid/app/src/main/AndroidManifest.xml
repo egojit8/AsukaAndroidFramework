@@ -9,6 +9,11 @@
         android:name=".DemoApplication"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
+
+        <meta-data android:name="AA_DB_NAME" android:value="test.db"/>
+        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+
+
         <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
