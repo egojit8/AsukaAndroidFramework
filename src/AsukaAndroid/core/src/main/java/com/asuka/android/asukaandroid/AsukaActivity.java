@@ -4,8 +4,12 @@ import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.asuka.android.asukaandroid.comm.utils.LogUtil;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
@@ -57,6 +61,34 @@ public class AsukaActivity extends AppCompatActivity {
 //        window.setFlags(
 //                WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION,
 //                WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+    }
+
+
+    public void showSuccess(String text) {
+        Toast toast = Toast.makeText(getApplicationContext(),
+                text, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 20, 20);
+        LinearLayout toastView = (LinearLayout) toast.getView();
+        ImageView imageCodeProject = new ImageView(getApplicationContext());
+        imageCodeProject.setImageResource(R.drawable.ico_success);
+        toastView.addView(imageCodeProject, 0);
+        toastView.setPadding(100,85,100,85);
+
+        toast.show();
+//        Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
+    }
+
+    public void showWarning(String text) {
+        Toast toast = Toast.makeText(getApplicationContext(),
+                text, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 20, 20);
+        LinearLayout toastView = (LinearLayout) toast.getView();
+        ImageView imageCodeProject = new ImageView(getApplicationContext());
+        imageCodeProject.setImageResource(R.drawable.ico_warning);
+        toastView.addView(imageCodeProject, 0);
+        toastView.setPadding(100,85,100,85);
+        toast.show();
+//        Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
     }
 
 }
