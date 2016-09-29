@@ -16,6 +16,10 @@ public interface AsukaListView {
     public void setDataSource(JSONArray list);
 
     /**
+     * 设置项
+     */
+    public void setItemView(ListItemView itemView);
+    /**
      * 设置空视图
      * @param view
      */
@@ -25,4 +29,8 @@ public interface AsukaListView {
      * 是否可以下拉
      */
     public void setPullToDownEnable(boolean canPull);
+
+
+
+
 }

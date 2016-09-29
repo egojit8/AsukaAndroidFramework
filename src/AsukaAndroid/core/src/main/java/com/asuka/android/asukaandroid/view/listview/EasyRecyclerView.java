@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 
 import com.asuka.android.asukaandroid.R;
 import com.asuka.android.asukaandroid.comm.utils.LogUtil;
+import com.asuka.android.asukaandroid.view.listview.adapter.BaseViewHolder;
 import com.asuka.android.asukaandroid.view.listview.adapter.RecyclerArrayAdapter;
 import com.asuka.android.asukaandroid.view.listview.swipe.SwipeRefreshLayout;
 
@@ -514,6 +515,43 @@ public class EasyRecyclerView extends FrameLayout {
     public View getEmptyView() {
         if (mEmptyView.getChildCount()>0)return mEmptyView.getChildAt(0);
         return null;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public class AsukaRecyclerViewAdapter<T> extends RecyclerView.Adapter<BaseViewHolder>  {
+
+
+        @Override
+        public BaseViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            BaseViewHolder<T> baseViewHolder=new BaseViewHolder<T>() {
+                @Override
+                public void setData(T data) {
+                    super.setData(data);
+                }
+            }
+            return null;
+        }
+
+        @Override
+        public void onBindViewHolder(BaseViewHolder holder, int position) {
+
+        }
+
+        @Override
+        public int getItemCount() {
+            return 0;
+        }
     }
 
 
