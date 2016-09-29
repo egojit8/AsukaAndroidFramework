@@ -3,8 +3,12 @@ package com.asuka.android.asukaandroid;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
@@ -23,6 +27,8 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
 public class AsukaActivity extends AppCompatActivity {
 
     private SystemBarTintManager tintManager;
+    private View asukaView;
+    private LinearLayout linAsukaBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +70,19 @@ public class AsukaActivity extends AppCompatActivity {
 //                WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
     }
 
+    @Override
+    public void setContentView(@LayoutRes int layoutResID) {
+//        super.setContentView(layoutResID);
+        asukaView = LayoutInflater.from(this).inflate(R.layout.activity_asuka, null);
+        linAsukaBox = (LinearLayout) asukaView.findViewById(R.id.linAsukaBox);
+        View view = LayoutInflater.from(this).inflate(layoutResID, null);
+        linAsukaBox.addView(view);
 
+        setContentView(asukaView);
+
+        Toolbar bar = (Toolbar) asukaView.findViewById(R.id.AsukaToolBar);
+        setSupportActionBar(bar);
+    }
     public void showSuccess(String text) {
         Toast toast = Toast.makeText(getApplicationContext(),
                 text, Toast.LENGTH_SHORT);
