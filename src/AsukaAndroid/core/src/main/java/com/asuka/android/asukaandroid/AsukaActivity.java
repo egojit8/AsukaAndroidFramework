@@ -16,6 +16,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.asuka.android.asukaandroid.comm.utils.LogUtil;
+import com.asuka.android.asukaandroid.widget.AsukaToolbar;
 import com.asuka.android.asukaandroid.widget.DialogProgress;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
@@ -24,7 +25,7 @@ import com.readystatesoftware.systembartint.SystemBarTintManager;
  * Time:2016-9-9
  * Mask: 所有activity继承这个Activity
  */
-public class AsukaActivity extends AppCompatActivity {
+public abstract class AsukaActivity extends AppCompatActivity {
 
     private SystemBarTintManager tintManager;
     private View asukaView;
@@ -80,8 +81,13 @@ public class AsukaActivity extends AppCompatActivity {
 
         setContentView(asukaView);
 
-        Toolbar bar = (Toolbar) asukaView.findViewById(R.id.AsukaToolBar);
+        AsukaToolbar bar = (AsukaToolbar) asukaView.findViewById(R.id.AsukaToolBar);
+        bar.setTitle("测试");
+        setTitle("mmmm");
         setSupportActionBar(bar);
+        bar.setTitle("测试");
+
+
     }
     public void showSuccess(String text) {
         Toast toast = Toast.makeText(getApplicationContext(),
@@ -123,4 +129,11 @@ public class AsukaActivity extends AppCompatActivity {
     public void dissmisLoging(){
         DialogProgress.getInstance().unRegistDialogProgress();
     }
+
+
+    /**
+     * 刷新界面
+     */
+    protected  abstract void refrehView();
+
 }

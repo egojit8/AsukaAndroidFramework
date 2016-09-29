@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <style name="CustomToolbarHeight" parent="Widget.AppCompat.Toolbar">
+        <item name="android:padding">16dp</item>
+    </style>
     <!-- dialog 请稍后。。。 -->
     <style name="activity_dialog" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
