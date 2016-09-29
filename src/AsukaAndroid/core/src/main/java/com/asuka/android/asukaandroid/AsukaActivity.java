@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.asuka.android.asukaandroid.comm.utils.LogUtil;
+import com.asuka.android.asukaandroid.widget.DialogProgress;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 /**
@@ -91,4 +92,17 @@ public class AsukaActivity extends AppCompatActivity {
 //        Toast.makeText(getApplicationContext(),text,Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * 显示进度对话框
+     */
+    public void showLoging(){
+        DialogProgress.getInstance().registDialogProgress(this);
+    }
+
+    /**
+     * 显示进度对话框
+     */
+    public void dissmisLoging(){
+        DialogProgress.getInstance().unRegistDialogProgress();
+    }
 }
